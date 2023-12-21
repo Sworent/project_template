@@ -7,9 +7,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'ssh root@ub1 \'hostname\''
-                echo 'success connection'
-                echo 'build complete'
+                sh '''
+                  ssh root@ub1 \'hostname\'
+                  echo 'success connection'
+                  echo 'build complete'
+                '''
             }
         }
 
