@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment{
+        PROJECT_NAME = 'PIPELINE-GAME'
+        OWNER_NAME   = 'Ivan_Meshcheryagin'
+    }
+    
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
@@ -8,7 +13,6 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
-                  ssh root@ub1 \'hostname\'
                   echo 'success connection'
                   echo 'build complete'
                 '''
@@ -18,13 +22,13 @@ pipeline {
         stage('test') {
             steps {
                 echo 'test-before-prod'
+                echo "Hello, it\'s me ${OWNER_NAME} and it\'s my project ${PROJECT_NAME}"
             }
         }
 
         stage('deploy') {
             steps {
                echo 'deploy complete'
-               
             }
         }
     }
