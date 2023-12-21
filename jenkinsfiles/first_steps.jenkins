@@ -1,7 +1,3 @@
-#!groovy
-// Check ub1 properties
-properties([disableConcurrentBuilds()])
-
 pipeline {
     agent any
     options {
@@ -9,9 +5,11 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("First step") {
+        stage('build') {
             steps {
                 sh 'ssh root@ub1 \'hostname\''
+                echo 'success connection'
+                echo 'build complete'
             }
         }
 
