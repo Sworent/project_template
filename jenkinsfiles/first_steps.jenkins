@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:latest' }}
+    agent any
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
@@ -24,7 +24,7 @@ pipeline {
         stage('deploy') {
             steps {
                echo 'deploy complete'
-               sh 'python --version'
+               
             }
         }
     }
